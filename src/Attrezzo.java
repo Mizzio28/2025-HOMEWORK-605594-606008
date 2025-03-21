@@ -16,15 +16,17 @@ public class Attrezzo {
 
 	private String nome;
 	private int peso;
+	private int eta;
 
 	/**
 	 * Crea un attrezzo
 	 * @param nome il nome che identifica l'attrezzo
 	 * @param peso il peso dell'attrezzo
 	 */
-	public Attrezzo(String nome, int peso) {
+	public Attrezzo(String nome, int peso, int eta) {
 		this.peso = peso;
 		this.nome = nome;
+		this.eta = eta;
 	}
 
 	/**
@@ -41,6 +43,10 @@ public class Attrezzo {
 	 */
 	public int getPeso() {
 		return this.peso;
+	}
+	
+	public int getEta() {
+		return this.eta;
 	}
 
 	/**
