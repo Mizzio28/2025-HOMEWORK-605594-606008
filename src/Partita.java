@@ -1,7 +1,7 @@
 
 
-
-
+// andrebbe creata una classe labirinto che gestisce la topologia della mappa
+// volendo si può inserire una classe giocatore nella quale inserire ad esempio la stanza corrente poichè è una proprietà del giocatore come ad esempio il suo inventario
 /**
  * Questa classe modella una partita del gioco
  *
@@ -60,8 +60,8 @@ public class Partita {
 		atrio.addAttrezzo(osso);
 
 		// il gioco comincia nell'atrio
-        stanzaCorrente = atrio;  
-		stanzaVincente = biblioteca;
+        stanzaCorrente = atrio; 
+		stanzaVincente = biblioteca; //può essere randomizzato
     }
 
 	public Stanza getStanzaVincente() {

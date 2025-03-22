@@ -14,6 +14,8 @@ import java.util.Scanner;
  * @version base
  */
 
+/*può essere resa più coesa, si possono delegare alcune responsabilità ad altre classi sennò fa troppe cose ed è poco mantenibile o leggibile*/
+
 public class DiaDia {
 
 	static final private String MESSAGGIO_BENVENUTO = ""+
@@ -33,6 +35,7 @@ public class DiaDia {
 	public DiaDia() {
 		this.partita = new Partita();
 	}
+	
 
 	public void gioca() {
 		String istruzione; 
@@ -51,6 +54,7 @@ public class DiaDia {
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
+	// si potrebbero separare i metodi dei comandi per una coesione maggiore (per ora meglio evitare) 
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire = new Comando(istruzione);
 
