@@ -1,6 +1,9 @@
+package it.uniroma3.diadia;
 
 
 import java.util.Scanner;
+
+import it.uniroma3.diadia.ambienti.Stanza;
 //bellaaaaa
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.

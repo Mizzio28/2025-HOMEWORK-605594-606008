@@ -1,7 +1,13 @@
-
-
 // andrebbe creata una classe labirinto che gestisce la topologia della mappa
 // volendo si può inserire una classe giocatore nella quale inserire ad esempio la stanza corrente poichè è una proprietà del giocatore come ad esempio il suo inventario
+package it.uniroma3.diadia;
+
+
+
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.giocatore.Giocatore;
+
 /**
  * Questa classe modella una partita del gioco
  *
@@ -18,60 +24,31 @@ public class Partita {
 	private Stanza stanzaVincente;
 	private boolean finita;
 	private int cfu;
+	private Labirinto labirinto;
+	private Giocatore giocatore;
 	
 	public Partita(){
-		creaStanze();
+		this.labirinto = new Labirinto();
+		this.stanzaCorrente = labirinto.getStanzaIniziale();
+		this.stanzaVincente = labirinto.getStanzaIniziale();
 		this.finita = false;
-		this.cfu = CFU_INIZIALI;
+		this.giocatore = new Giocatore();
 	}
-
-    /**
-     * Crea tutte le stanze e le porte di collegamento
+	
+	/**
+     * Restituisce la stanza vincente (finale).
      */
-    private void creaStanze() {
-
-		/* crea gli attrezzi */
-    	Attrezzo lanterna = new Attrezzo("lanterna",3);
-		Attrezzo osso = new Attrezzo("osso",1);
-    	
-		/* crea stanze del labirinto */
-		Stanza atrio = new Stanza("Atrio");
-		Stanza aulaN11 = new Stanza("Aula N11");
-		Stanza aulaN10 = new Stanza("Aula N10");
-		Stanza laboratorio = new Stanza("Laboratorio Campus");
-		Stanza biblioteca = new Stanza("Biblioteca");
-		
-		/* collega le stanze */
-		atrio.impostaStanzaAdiacente("nord", biblioteca);
-		atrio.impostaStanzaAdiacente("est", aulaN11);
-		atrio.impostaStanzaAdiacente("sud", aulaN10);
-		atrio.impostaStanzaAdiacente("ovest", laboratorio);
-		aulaN11.impostaStanzaAdiacente("est", laboratorio);
-		aulaN11.impostaStanzaAdiacente("ovest", atrio);
-		aulaN10.impostaStanzaAdiacente("nord", atrio);
-		aulaN10.impostaStanzaAdiacente("est", aulaN11);
-		aulaN10.impostaStanzaAdiacente("ovest", laboratorio);
-		laboratorio.impostaStanzaAdiacente("est", atrio);
-		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
-		biblioteca.impostaStanzaAdiacente("sud", atrio);
-
-        /* pone gli attrezzi nelle stanze */
-		aulaN10.addAttrezzo(lanterna);
-		atrio.addAttrezzo(osso);
-
-		// il gioco comincia nell'atrio
-        stanzaCorrente = atrio; 
-		stanzaVincente = biblioteca; //può essere randomizzato
-    }
-
 	public Stanza getStanzaVincente() {
 		return stanzaVincente;
 	}
-
+	
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
 	}
-
+	
+	/**
+     * Restituisce la stanza corrente.
+     */
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
@@ -106,5 +83,9 @@ public class Partita {
 
 	public void setCfu(int cfu) {
 		this.cfu = cfu;		
-	}	
+	}
+	
+	public Giocatore getGiocatore() {
+		return this.giocatore;
+	}
 }
