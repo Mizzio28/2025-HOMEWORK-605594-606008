@@ -69,6 +69,8 @@ public class DiaDia {
 				return true;
 			} else if (comandoDaEseguire.getNome().equals("vai"))
 				this.vai(comandoDaEseguire.getParametro());
+			else if (comandoDaEseguire.getNome().equals("prendi"))
+				this.prendi(comandoDaEseguire.getParametro());
 			else if (comandoDaEseguire.getNome().equals("aiuto"))
 				this.aiuto();
 			else
@@ -95,8 +97,16 @@ public class DiaDia {
 	private void prendi(String nomeAttrezzo) {
 		Stanza stanza = this.partita.getStanzaCorrente();
 		Attrezzo attrezzo = stanza.getAttrezzo(nomeAttrezzo);
-		
-		
+		if(attrezzo!=null) {
+			if(this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo)) {
+				stanza.removeAttrezzo(attrezzo);
+				io.mostraMessaggio("Hai inserito nella borsa l'attrezzo: "+attrezzo.getNome());
+			}else {
+				io.mostraMessaggio("Purtroppo non hai più spazio nella borsa!");
+			}
+		}else {
+			io.mostraMessaggio("Purtroppo questo attrezzo non è presente nella stanza");
+		}
 	}
 
 	/**
