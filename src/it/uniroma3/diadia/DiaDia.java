@@ -4,6 +4,7 @@ package it.uniroma3.diadia;
 import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -34,9 +35,11 @@ public class DiaDia {
 	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
 
 	private Partita partita;
+	private IOConsole io;
 
 	public DiaDia() {
 		this.partita = new Partita();
+		this.io = new IOConsole();
 	}
 	
 
@@ -44,10 +47,10 @@ public class DiaDia {
 		String istruzione; 
 		Scanner scannerDiLinee;
 
-		System.out.println(MESSAGGIO_BENVENUTO);
-		scannerDiLinee = new Scanner(System.in);		
+		io.mostraMessaggio(MESSAGGIO_BENVENUTO);
+				
 		do		
-			istruzione = scannerDiLinee.nextLine();
+			istruzione = io.leggiRiga();
 		while (!processaIstruzione(istruzione));
 	}   
 
@@ -60,7 +63,7 @@ public class DiaDia {
 	// si potrebbero separare i metodi dei comandi per una coesione maggiore (per ora meglio evitare) 
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire = new Comando(istruzione);
-//		if(comandoDaEseguire.getNome()!=null) 
+		if(comandoDaEseguire.getNome()!=null) 
 			if (comandoDaEseguire.getNome().equals("fine")) {
 				this.fine(); 
 				return true;
@@ -69,9 +72,9 @@ public class DiaDia {
 			else if (comandoDaEseguire.getNome().equals("aiuto"))
 				this.aiuto();
 			else
-				System.out.println("Comando sconosciuto");
+				io.mostraMessaggio("Comando sconosciuto");
 			if (this.partita.vinta()) {
-				System.out.println("Hai vinto!");
+				io.mostraMessaggio("Hai vinto!");
 				return true;
 			} else
 				return false;   
@@ -83,9 +86,17 @@ public class DiaDia {
 	 * Stampa informazioni di aiuto.
 	 */
 	private void aiuto() {
+		StringBuilder messaggioAiuto = new StringBuilder();
 		for(int i=0; i< elencoComandi.length; i++) 
-			System.out.print(elencoComandi[i]+" ");
-		System.out.println();
+			messaggioAiuto.append(elencoComandi[i]+" ");
+		io.mostraMessaggio(messaggioAiuto.toString());
+	}
+	
+	private void prendi(String nomeAttrezzo) {
+		Stanza stanza = this.partita.getStanzaCorrente();
+		Attrezzo attrezzo = stanza.getAttrezzo(nomeAttrezzo);
+		
+		
 	}
 
 	/**
@@ -94,24 +105,24 @@ public class DiaDia {
 	 */
 	private void vai(String direzione) {
 		if(direzione==null)
-			System.out.println("Dove vuoi andare ?");
+			io.mostraMessaggio("Dove vuoi andare ?");
 		Stanza prossimaStanza = null;
 		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
-			System.out.println("Direzione inesistente");
+			io.mostraMessaggio("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
 			int cfu = this.partita.getCfu();
 			this.partita.setCfu(cfu--);
 		}
-		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 	}
 
 	/**
 	 * Comando "Fine".
 	 */
 	private void fine() {
-		System.out.println("Grazie di aver giocato!");  // si desidera smettere
+		io.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
 	}
 
 	public static void main(String[] argc) {
