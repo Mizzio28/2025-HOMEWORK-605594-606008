@@ -1,14 +1,14 @@
-package it.uniroma3.diadia.ambienti;
+package testfunzioni;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-import org.junit.jupiter.api.BeforeEach;
-
-class StanzaTest {
+class testStanza {
 
 	private Stanza stanza1;
     private Stanza stanza2;

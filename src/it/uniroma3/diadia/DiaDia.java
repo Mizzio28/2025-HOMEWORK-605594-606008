@@ -4,7 +4,7 @@ package it.uniroma3.diadia;
 import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Stanza;
-//bellaaaaa
+
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
  * Per giocare crea un'istanza di questa classe e invoca il letodo gioca
@@ -60,22 +60,22 @@ public class DiaDia {
 	// si potrebbero separare i metodi dei comandi per una coesione maggiore (per ora meglio evitare) 
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire = new Comando(istruzione);
-
-		if (comandoDaEseguire.getNome().equals("fine")) {
-			this.fine(); 
-			return true;
-		} else if (comandoDaEseguire.getNome().equals("vai"))
-			this.vai(comandoDaEseguire.getParametro());
-		else if (comandoDaEseguire.getNome().equals("aiuto"))
-			this.aiuto();
-		else
-			System.out.println("Comando sconosciuto");
-		if (this.partita.vinta()) {
-			System.out.println("Hai vinto!");
-			return true;
-		} else
-			return false;
-	}   
+//		if(comandoDaEseguire.getNome()!=null) 
+			if (comandoDaEseguire.getNome().equals("fine")) {
+				this.fine(); 
+				return true;
+			} else if (comandoDaEseguire.getNome().equals("vai"))
+				this.vai(comandoDaEseguire.getParametro());
+			else if (comandoDaEseguire.getNome().equals("aiuto"))
+				this.aiuto();
+			else
+				System.out.println("Comando sconosciuto");
+			if (this.partita.vinta()) {
+				System.out.println("Hai vinto!");
+				return true;
+			} else
+				return false;   
+	}
 
 	// implementazioni dei comandi dell'utente:
 

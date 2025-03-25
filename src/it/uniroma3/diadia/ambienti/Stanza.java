@@ -125,11 +125,16 @@ public class Stanza {
     	for (String direzione : this.direzioni)
     		if (direzione!=null)
     			risultato.append(" " + direzione);
+    	boolean stanzaVuota = true;
     	risultato.append("\nAttrezzi nella stanza: ");
     	for (Attrezzo attrezzo : this.attrezzi) {
     		if(attrezzo!=null) {
     		risultato.append(attrezzo.toString()+" ");
+    		stanzaVuota = false;
     		}
+    	}
+    	if(stanzaVuota) {
+    		risultato.append("Stanza vuota!");
     	}
     	return risultato.toString();
     }

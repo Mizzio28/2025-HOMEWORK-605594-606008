@@ -1,14 +1,17 @@
-package it.uniroma3.diadia;
+package testfunzioni;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 
-class PartitaTest {
-
+public class testPartita {
 	private Partita partita;
     private Stanza stanzaIniziale;
     private Stanza stanzaVincente;
