@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.giocatore.Giocatore;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -71,6 +72,8 @@ public class DiaDia {
 				this.vai(comandoDaEseguire.getParametro());
 			else if (comandoDaEseguire.getNome().equals("prendi"))
 				this.prendi(comandoDaEseguire.getParametro());
+			else if(comandoDaEseguire.getNome().equals("posa"))
+				this.posa(comandoDaEseguire.getParametro());
 			else if (comandoDaEseguire.getNome().equals("aiuto"))
 				this.aiuto();
 			else
@@ -106,6 +109,21 @@ public class DiaDia {
 			}
 		}else {
 			io.mostraMessaggio("Purtroppo questo attrezzo non è presente nella stanza");
+		}
+	}
+	
+	private void posa(String nomeAttrezzo) {
+		Giocatore giocatore = this.partita.getGiocatore();
+		Attrezzo attrezzo = this.partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
+		if(attrezzo!=null) {
+			if(this.partita.getStanzaCorrente().addAttrezzo(attrezzo)) {
+				giocatore.removeAttrezzo(nomeAttrezzo);
+				io.mostraMessaggio("Hai posato correttamente l'attrezzo");
+			}else {
+				io.mostraMessaggio("Purtroppo la stanza è già piena");
+			}
+		}else {
+			io.mostraMessaggio("Purtroppo non hai questo attrezzo");
 		}
 	}
 
