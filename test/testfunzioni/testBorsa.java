@@ -17,9 +17,9 @@ class testBorsa {
     @BeforeEach
     void setUp() {
         borsa = new Borsa();
-        attrezzo1 = new Attrezzo("Spada", 3); // peso 3
-        attrezzo2 = new Attrezzo("Scudo", 5); // peso 5
-        attrezzo3 = new Attrezzo("Lanterna", 4); // peso 4
+        attrezzo1 = new Attrezzo("Spada", 3); 
+        attrezzo2 = new Attrezzo("Scudo", 5); 
+        attrezzo3 = new Attrezzo("Lanterna", 4);
     }
     
     @Test
