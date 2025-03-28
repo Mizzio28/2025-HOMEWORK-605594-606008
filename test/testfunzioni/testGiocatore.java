@@ -22,7 +22,7 @@ public class testGiocatore {
 	
 	@BeforeEach
 	void setUp(){
-		// creo una partita da testare
+		// creo un giocatore da testare
 		giocatore = new Giocatore();
 		//prendiamo i cfu iniziali del giocatore
 		cfu = giocatore.getCfu();	
@@ -44,7 +44,7 @@ public class testGiocatore {
         assertTrue(giocatore.hasAttrezzo("Spada"));
     }
 	@Test
-	void testHasAttrezzo(Attrezzo attrezzo) {
+	void testHasAttrezzo() {
         // Testa che la funzione hasAttrezzo funzioni correttamente
         giocatore.addAttrezzo(attrezzo);
         assertTrue(giocatore.hasAttrezzo("Spada"));
