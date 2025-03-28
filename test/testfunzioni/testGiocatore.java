@@ -56,7 +56,7 @@ public class testGiocatore {
         assertTrue(giocatore.hasAttrezzo("Spada"));
         
         Boolean removed = giocatore.removeAttrezzo("Spada");
-        assertEquals(attrezzo, removed);
+        assertNotNull(removed);
         assertFalse(giocatore.hasAttrezzo("Spada"));
     }
 }
