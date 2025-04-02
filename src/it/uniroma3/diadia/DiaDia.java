@@ -110,6 +110,7 @@ public class DiaDia {
 		}else {
 			io.mostraMessaggio("Purtroppo questo attrezzo non è presente nella stanza");
 		}
+		io.mostraMessaggio("La tua borsa al momento pesa:" + this.partita.getGiocatore().getBorsa().getPeso()+"Kg");
 	}
 	
 	private void posa(String nomeAttrezzo) {
@@ -125,6 +126,7 @@ public class DiaDia {
 		}else {
 			io.mostraMessaggio("Purtroppo non hai questo attrezzo");
 		}
+		io.mostraMessaggio("La tua borsa al momento pesa:" + this.partita.getGiocatore().getBorsa().getPeso()+ "Kg");
 	}
 
 	/**
@@ -140,10 +142,12 @@ public class DiaDia {
 			io.mostraMessaggio("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			int cfu = this.partita.getGiocatore().getCfu();
+			this.partita.getGiocatore().setCfu(cfu-1);
+			io.mostraMessaggio("La tua borsa al momento pesa: "+this.partita.getGiocatore().getBorsa().getPeso()+"Kg");
 		}
 		io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
+		io.mostraMessaggio("" +partita.getGiocatore().getCfu());
 	}
 
 	/**

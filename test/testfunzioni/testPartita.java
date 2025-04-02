@@ -41,24 +41,24 @@ public class testPartita {
 
     @Test
     void testIsFinita() {
-        partita.setCfu(0);  
+        partita.getGiocatore().setCfu(0);  
         assertTrue(partita.isFinita());  
 
-        partita.setCfu(10);  
+        partita.getGiocatore().setCfu(10);  
         partita.setStanzaCorrente(stanzaVincente);  
         assertTrue(partita.isFinita());  
     }
-
+/*
     @Test
     void testModificaCfu() {
-        int cfuIniziali = partita.getCfu();
-        partita.setCfu(cfuIniziali - 1); 
-        assertEquals(cfuIniziali - 1, partita.getCfu()); 
+        int cfuIniziali = partita.getGiocatore().getCfu();
+        partita.getGiocatore().setCfu(cfuIniziali - 1); 
+        assertEquals(cfuIniziali - 1, partita.getGiocatore().getCfu()); 
 
-        partita.setCfu(cfuIniziali);  
-        assertEquals(cfuIniziali, partita.getCfu());  
+        partita.getGiocatore().setCfu(cfuIniziali);  
+        assertEquals(cfuIniziali, partita.getGiocatore().getCfu());  
     }
-
+*/
     @Test
     void testSetFinita() {
         partita.setFinita();

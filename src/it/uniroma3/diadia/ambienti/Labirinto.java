@@ -24,7 +24,7 @@ public class Labirinto {
         Stanza aulaN10 = new Stanza("Aula N10");
         Stanza laboratorio = new Stanza("Laboratorio Campus");
         Stanza biblioteca = new Stanza("Biblioteca");
-
+        
         // Collega le stanze
         atrio.impostaStanzaAdiacente("nord", biblioteca);
         atrio.impostaStanzaAdiacente("est", aulaN11);
