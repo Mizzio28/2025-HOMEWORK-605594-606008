@@ -23,7 +23,7 @@ public class testGiocatore {
 	@BeforeEach
 	void setUp(){
 		// creo un giocatore da testare
-		giocatore = new Giocatore();
+		giocatore = new Giocatore(20);
 		//prendiamo i cfu iniziali del giocatore
 		cfu = giocatore.getCfu();	
 		//creo un attrezzo da far gestire al giocatore

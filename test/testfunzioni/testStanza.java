@@ -31,13 +31,32 @@ class testStanza {
         assertEquals("Stanza 1", stanza1.getNome());
     }
     
+    @Test 
+    void testStanzaNulla() {
+    	assertNotNull(stanza1);
+    }
+    
     //Aggiungi attrezzo non va
 
     @Test
-    void testAggiungiAttrezzo() {
+    void testAggiungiAttrezzo1() {
         // Testa che un attrezzo venga aggiunto correttamente
         assertTrue(stanza1.addAttrezzo(attrezzo1));
         assertTrue(stanza1.hasAttrezzo("Spada"));
+    }
+    
+    @Test
+    void testAggiungiAttrezzo2() {
+        // Testa che un attrezzo venga aggiunto correttamente
+        assertTrue(stanza1.addAttrezzo(attrezzo2));
+        assertFalse(stanza1.hasAttrezzo("Spada"));
+    }
+    
+    @Test
+    void testAggiungiAttrezzo3() {
+        // Testa che un attrezzo venga aggiunto correttamente
+        assertTrue(stanza1.addAttrezzo(attrezzo2));
+        assertTrue(stanza1.hasAttrezzo("Scudo"));
     }
 
     @Test
@@ -47,6 +66,7 @@ class testStanza {
         }
         assertFalse(stanza1.addAttrezzo(new Attrezzo("Attrezzo11", 11)));
     }
+    
 
     @Test
     void testGetAttrezzo() {
@@ -65,6 +85,14 @@ class testStanza {
     }
 
     @Test
+    void testImpostaStanzaAdiacente2() {
+        stanza2.impostaStanzaAdiacente("sud", stanza1);
+        Stanza stanzaAdiacente = stanza2.getStanzaAdiacente("sud");
+        assertNotNull(stanzaAdiacente);
+        assertEquals("Stanza 1", stanzaAdiacente.getNome());
+    }
+    
+    @Test
     void testGetDirezioni() {
         stanza1.impostaStanzaAdiacente("nord", stanza2);
         String[] direzioni = stanza1.getDirezioni();
@@ -72,14 +100,28 @@ class testStanza {
         assertEquals("nord", direzioni[0]);
     }
     
-    //HasAttrezzo non va 
-
     @Test
-    void testHasAttrezzo() {
+    void testHasAttrezzo1() {
         // Testa che la funzione hasAttrezzo funzioni correttamente
         stanza1.addAttrezzo(attrezzo1);
         assertTrue(stanza1.hasAttrezzo("Spada"));
         assertFalse(stanza1.hasAttrezzo("Scudo"));
     }
 
+    @Test
+    void testHasAttrezzo2() {
+        // Testa che la funzione hasAttrezzo funzioni correttamente
+        stanza1.addAttrezzo(attrezzo2);
+        assertTrue(stanza1.hasAttrezzo("Scudo"));
+        assertFalse(stanza1.hasAttrezzo("Spada"));
+    }
+    
+    @Test
+    void testHasAttrezzo3() {
+        // Testa che la funzione hasAttrezzo funzioni correttamente
+        stanza1.addAttrezzo(attrezzo1);
+        stanza2.addAttrezzo(attrezzo2);
+        assertFalse(stanza1.hasAttrezzo("Scudo"));
+        assertTrue(stanza1.hasAttrezzo("Spada"));
+    }
 }

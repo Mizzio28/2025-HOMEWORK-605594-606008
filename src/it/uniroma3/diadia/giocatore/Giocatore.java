@@ -3,17 +3,12 @@ package it.uniroma3.diadia.giocatore;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 
-
-//TOCCA FARE IL JUNIT TEST CASE PER QUESTA CLASSE
-
-
-
 public class Giocatore {
 	private int cfu;
     private Borsa borsa;
 
-    public Giocatore() {
-        this.cfu = 20; // CFU iniziali
+    public Giocatore(int cfu) {
+        this.cfu = cfu;
         this.borsa = new Borsa();
     }
 

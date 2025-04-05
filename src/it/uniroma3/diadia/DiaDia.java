@@ -138,14 +138,20 @@ public class DiaDia {
 			io.mostraMessaggio("Dove vuoi andare ?");
 		Stanza prossimaStanza = null;
 		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
-		if (prossimaStanza == null)
+		if (prossimaStanza == null) {
 			io.mostraMessaggio("Direzione inesistente");
-		else {
-			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getGiocatore().getCfu();
-			this.partita.getGiocatore().setCfu(cfu-1);
-			io.mostraMessaggio("La tua borsa al momento pesa: "+this.partita.getGiocatore().getBorsa().getPeso()+"Kg");
+		}else if(this.partita.getGiocatore().getCfu() <= 0 ){
+			this.partita.setFinita();
+			io.mostraMessaggio("Non hai CFU rimanenti");
+			this.fine(); 
+			}
+			else{
+				this.partita.setStanzaCorrente(prossimaStanza);
+				int cfu = this.partita.getGiocatore().getCfu();
+				this.partita.getGiocatore().setCfu(cfu-1);
+				io.mostraMessaggio("La tua borsa al momento pesa: "+this.partita.getGiocatore().getBorsa().getPeso()+"Kg ");
 		}
+		
 		io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 		io.mostraMessaggio("" +partita.getGiocatore().getCfu());
 	}
