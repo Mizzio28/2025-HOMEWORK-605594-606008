@@ -56,6 +56,7 @@ class testBorsa {
     void testRemoveAttrezzoNonEsistente() {
         assertNull(borsa.removeAttrezzo("Elmo"));
     }
+    
 
     @Test
     void testIsEmpty() {

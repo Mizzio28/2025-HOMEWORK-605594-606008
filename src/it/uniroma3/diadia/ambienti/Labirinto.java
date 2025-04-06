@@ -49,11 +49,11 @@ public class Labirinto {
     }
 
     public Stanza getStanzaIniziale() {
-        return stanzaIniziale;
+        return this.stanzaIniziale;
     }
 
     public Stanza getStanzaFinale() {
-        return stanzaFinale;
+        return this.stanzaFinale;
     }
 
 }

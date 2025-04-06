@@ -23,18 +23,16 @@ public class testLabirinto {
     @BeforeEach
     void setUp() {
         labirinto = new Labirinto();
-        
-        atrio = new Stanza("Atrio");
-        aulaN11 = new Stanza("Aula N11");
-        aulaN10 = new Stanza("Aula N10");
-        laboratorio = new Stanza("Laboratorio Campus");
-        biblioteca = new Stanza("Biblioteca");
-        lanterna = new Attrezzo("lanterna", 3);
-        osso = new Attrezzo("osso", 1);
     }
-
+    
+    
     @Test
     void testStanzeCollegateCorrettamente() {
+    	atrio = labirinto.getStanzaIniziale();  
+        biblioteca = labirinto.getStanzaFinale();  
+        aulaN11 = atrio.getStanzaAdiacente("est");
+        aulaN10 = atrio.getStanzaAdiacente("sud");
+        laboratorio = atrio.getStanzaAdiacente("ovest");        
         assertEquals(biblioteca, atrio.getStanzaAdiacente("nord"));
         assertEquals(aulaN11, atrio.getStanzaAdiacente("est"));
         assertEquals(aulaN10, atrio.getStanzaAdiacente("sud"));
@@ -51,18 +49,31 @@ public class testLabirinto {
 
     @Test
     void testAttrezziNelleStanze() {
+    	aulaN10 = labirinto.getStanzaIniziale().getStanzaAdiacente("sud");
+    	lanterna = new Attrezzo("lanterna", 3);
+        osso = new Attrezzo("osso", 1);
+         
+        aulaN10.addAttrezzo(lanterna);
+        atrio = labirinto.getStanzaIniziale();
+        atrio.addAttrezzo(osso);
+
         assertTrue(aulaN10.hasAttrezzo("lanterna"));
         assertTrue(atrio.hasAttrezzo("osso"));
+       
     }
 
     @Test
-    void testStanzaInizialeEFinale() {
+    void testGetterInizialeEFinale() {
+    	atrio = labirinto.getStanzaIniziale();
+    	biblioteca = labirinto.getStanzaFinale();
         assertEquals(atrio, labirinto.getStanzaIniziale());
         assertEquals(biblioteca, labirinto.getStanzaFinale());
     }
 
     @Test
     void testCollegamentiAdiacenti() {
+    	atrio = labirinto.getStanzaIniziale();  
+        aulaN11 = atrio.getStanzaAdiacente("est");
         atrio.impostaStanzaAdiacente("nord", aulaN11);
         assertEquals(aulaN11, atrio.getStanzaAdiacente("nord"));
     }

@@ -22,39 +22,46 @@ public class testGiocatore {
 	
 	@BeforeEach
 	void setUp(){
-		// creo un giocatore da testare
 		giocatore = new Giocatore(20);
-		//prendiamo i cfu iniziali del giocatore
 		cfu = giocatore.getCfu();	
-		//creo un attrezzo da far gestire al giocatore
 		attrezzo = new Attrezzo("Spada", 1);
 	}
 	@Test
 	void testCreazioneGiocatore() {
-		//verifica della partita creata correttamente 
 		assertNotNull(giocatore);
-		//verifica condizioni iniziali cfu giocatore
 		assertEquals(cfu, giocatore.getCfu());
 	}
-	//test set e get cfu già fatti in partita
+
 	@Test
-    void testAggiungiAttrezzo() {
-        // Testa che un attrezzo venga aggiunto correttamente
+    void testAggiungiAttrezzo1() {
+        
         assertTrue(giocatore.addAttrezzo(attrezzo));
         assertTrue(giocatore.hasAttrezzo("Spada"));
     }
+	
 	@Test
-	void testHasAttrezzo() {
-        // Testa che la funzione hasAttrezzo funzioni correttamente
-        giocatore.addAttrezzo(attrezzo);
-        assertTrue(giocatore.hasAttrezzo("Spada"));
+    void testAggiungiAttrezzo2() {
+        assertTrue(giocatore.addAttrezzo(attrezzo));
         assertFalse(giocatore.hasAttrezzo("Scudo"));
     }
+	
+	@Test
+	void testHasAttrezzo1() {
+        giocatore.addAttrezzo(attrezzo);
+        assertTrue(giocatore.hasAttrezzo("Spada"));
+    }
+	
+	@Test 
+	void testHasAttrezzo2() {
+		giocatore.addAttrezzo(attrezzo);
+		assertFalse(giocatore.hasAttrezzo("Scudo"));
+	}
+	
+	
 	@Test 
 	 void testRemoveAttrezzo() {
         giocatore.addAttrezzo(attrezzo);
         assertTrue(giocatore.hasAttrezzo("Spada"));
-        
         Boolean removed = giocatore.removeAttrezzo("Spada");
         assertNotNull(removed);
         assertFalse(giocatore.hasAttrezzo("Spada"));
