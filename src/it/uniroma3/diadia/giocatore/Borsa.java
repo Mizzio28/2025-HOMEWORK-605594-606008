@@ -3,10 +3,6 @@ package it.uniroma3.diadia.giocatore;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 
-
-//TOCCA FARE IL JUNIT TEST CASE PER QUESTA CLASSE
-
-
 public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = 10;
 	private Attrezzo[] attrezzi;
@@ -19,7 +15,7 @@ public class Borsa {
 	
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
-		this.attrezzi = new Attrezzo[10]; // speriamo bastino...
+		this.attrezzi = new Attrezzo[10]; 
 		this.numeroAttrezzi = 0;
 	}
 	
@@ -53,6 +49,12 @@ public class Borsa {
 		peso += this.attrezzi[i].getPeso();
 
 		return peso;
+	}
+	
+	public boolean getPesoRimanente(Attrezzo a) {
+		if(a != null && this.getPesoMax()-this.getPeso()>=a.getPeso())
+			return true;
+		return false; 
 	}
 	
 	public boolean isEmpty() {

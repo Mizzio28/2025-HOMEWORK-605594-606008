@@ -11,6 +11,10 @@ public class Giocatore {
         this.cfu = cfu;
         this.borsa = new Borsa();
     }
+    
+    public boolean isVivo() {
+        return this.cfu > 0;  
+    }
 
     public int getCfu() {
         return cfu;

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 /**
@@ -37,13 +38,15 @@ public class DiaDia {
 
 	private Partita partita;
 	private IOConsole io;
+	private FabbricaDiComandi fabbricaComandi;
+	
 
 	public DiaDia() {
 		this.partita = new Partita();
 		this.io = new IOConsole();
+		this.fabbricaComandi = new FabbricaDiComandi();
 	}
 	
-
 	public void gioca() {
 		String istruzione; 
 		Scanner scannerDiLinee;
@@ -63,6 +66,8 @@ public class DiaDia {
 	 */
 	// si potrebbero separare i metodi dei comandi per una coesione maggiore (per ora meglio evitare) 
 	private boolean processaIstruzione(String istruzione) {
+		//vecchio codice
+		/*
 		Comando comandoDaEseguire = new Comando(istruzione);
 		if(comandoDaEseguire.getNome()!=null) 
 			if (comandoDaEseguire.getNome().equals("fine")) {
@@ -82,14 +87,80 @@ public class DiaDia {
 				io.mostraMessaggio("Hai vinto!");
 				return true;
 			} else
-				return false;   
-	}
+				return false;  
+				*/ 
+		
+		//nuovo codice
+		Comando comandoDaEseguire = fabbricaComandi.costruisciComando(istruzione);
+		if(comandoDaEseguire==null) {
+			comandoDaEseguire.esegui(this.partita);
+		}else {
+			io.mostraMessaggio("Comando Sconosciuto");
+		}
+		if(this.partita.vinta()) {
+			io.mostraMessaggio("Hai vinto!!");
+		}else if (!this.partita.getGiocatore().isVivo()) {
+            io.mostraMessaggio("Hai esaurito i CFU...");
+        }
+
+        return this.partita.isFinita();
+    }
+
+    public static void main(String[] args) {
+        DiaDia gioco = new DiaDia();
+        gioco.gioca();
+    }
+	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Tecnicamente da qui in poi il codice non dovrebbe più servire
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 	// implementazioni dei comandi dell'utente:
 
 	/**
 	 * Stampa informazioni di aiuto.
 	 */
+    
+    
+    /*
 	private void aiuto() {
 		StringBuilder messaggioAiuto = new StringBuilder();
 		for(int i=0; i< elencoComandi.length; i++) 
@@ -133,6 +204,8 @@ public class DiaDia {
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
+    
+    /*
 	private void vai(String direzione) {
 		if(direzione==null)
 			io.mostraMessaggio("Dove vuoi andare ?");
@@ -159,6 +232,8 @@ public class DiaDia {
 	/**
 	 * Comando "Fine".
 	 */
+    
+    /*
 	private void fine() {
 		io.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
 	}
@@ -168,3 +243,7 @@ public class DiaDia {
 		gioco.gioca();
 	}
 }
+*/
+}
+	
+	
