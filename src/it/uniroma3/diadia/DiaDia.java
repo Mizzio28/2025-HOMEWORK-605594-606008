@@ -65,9 +65,10 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
 	// si potrebbero separare i metodi dei comandi per una coesione maggiore (per ora meglio evitare) 
+	/*
 	private boolean processaIstruzione(String istruzione) {
 		//vecchio codice
-		/*
+		
 		Comando comandoDaEseguire = new Comando(istruzione);
 		if(comandoDaEseguire.getNome()!=null) 
 			if (comandoDaEseguire.getNome().equals("fine")) {
