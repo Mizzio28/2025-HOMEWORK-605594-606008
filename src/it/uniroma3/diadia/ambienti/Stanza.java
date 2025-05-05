@@ -193,6 +193,10 @@ public class Stanza {
 	    }
 	    return false;  
 	}
+	
+	public int getNumeroAttrezziPossibili() {
+		return this.NUMERO_MASSIMO_ATTREZZI-this.numeroAttrezzi;
+	}
 
 
 	public String[] getDirezioni() {

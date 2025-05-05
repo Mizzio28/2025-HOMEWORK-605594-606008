@@ -7,6 +7,7 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
+import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 /**
@@ -42,10 +43,10 @@ public class DiaDia {
 	private FabbricaDiComandi fabbricaComandi;
 	
 
-	public DiaDia() {
+	public DiaDia(IO console) {
 		this.partita = new Partita();
 		this.io = new IOConsole();
-		this.fabbricaComandi = new FabbricaDiComandi();
+	//	this.fabbricaComandi = new FabbricaDiComandi();
 	}
 	
 	public void gioca() {
@@ -94,12 +95,11 @@ public class DiaDia {
 				*/ 
 		
 		//nuovo codice
-		Comando comandoDaEseguire = fabbricaComandi.costruisciComando(istruzione);
-		if(comandoDaEseguire==null) {
+		
+		Comando comandoDaEseguire;
+		FabbricaDiComandiFisarmonica industria = new FabbricaDiComandiFisarmonica(this.io);
+		comandoDaEseguire = industria.costruisciComando(istruzione);
 			comandoDaEseguire.esegui(this.partita);
-		}else {
-			io.mostraMessaggio("Comando Sconosciuto");
-		}
 		if(this.partita.vinta()) {
 			io.mostraMessaggio("Hai vinto!!");
 		}else if (!this.partita.getGiocatore().isVivo()) {
@@ -110,7 +110,8 @@ public class DiaDia {
     }
 
     public static void main(String[] args) {
-        DiaDia gioco = new DiaDia();
+    	IO console = new IOConsole();
+        DiaDia gioco = new DiaDia(console);
         gioco.gioca();
     }
 	
