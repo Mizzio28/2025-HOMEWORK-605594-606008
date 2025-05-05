@@ -6,6 +6,7 @@ import java.util.Scanner;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.FabbricaDiComandi;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 /**
@@ -65,8 +66,9 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
 	// si potrebbero separare i metodi dei comandi per una coesione maggiore (per ora meglio evitare) 
-	/*
+	
 	private boolean processaIstruzione(String istruzione) {
+		/*
 		//vecchio codice
 		
 		Comando comandoDaEseguire = new Comando(istruzione);

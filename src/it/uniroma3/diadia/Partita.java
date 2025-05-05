@@ -54,6 +54,14 @@ public class Partita {
 		return this.stanzaCorrente;
 	}
 	
+	public Labirinto getLabirinto() {
+		return this.labirinto;
+	}
+	
+	public void setLabirinto(Labirinto labirinto) {
+		this.labirinto = labirinto;
+	}
+	
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
@@ -84,6 +92,10 @@ public class Partita {
 	
 	public void setCfu(int cfu) {
 		this.cfu = cfu;		
+	}
+	
+	public boolean isVivo() {
+		return this.giocatore.getCfu()>0;
 	}
 
 	public Giocatore getGiocatore() {

@@ -72,6 +72,10 @@ public class Stanza {
         		stanza = this.stanzeAdiacenti[i];
         return stanza;
 	}
+	
+	public Stanza getStanzaCorrente() {
+		return this.getStanzaCorrente();
+	}
 
     /**
      * Restituisce la nome della stanza.

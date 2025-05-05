@@ -40,7 +40,7 @@ public class ComandoPrendi implements Comando {
 		this.io = io;
 	}
 	
-	@Override
+	//Override
 	public String getNome() {
 		return NOME;
 	}
@@ -60,4 +60,3 @@ public class ComandoPrendi implements Comando {
         }
         System.out.println("La tua borsa al momento pesa: " + partita.getGiocatore().getBorsa().getPeso() + "Kg");
  */
-*/
