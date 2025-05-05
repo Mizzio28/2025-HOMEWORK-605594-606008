@@ -55,9 +55,5 @@ public class Labirinto {
     public Stanza getStanzaFinale() {
         return this.stanzaFinale;
     }
-    
-    public Stanza getStanzaCorrente() {
-    	return this.getStanzaCorrente();
-    }
 
 }

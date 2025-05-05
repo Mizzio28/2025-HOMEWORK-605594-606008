@@ -17,11 +17,12 @@ public class ComandoPosa implements Comando {
 		Attrezzo a = partita.getGiocatore().getBorsa().getAttrezzo(nomeAttrezzo);
 
 		if(partita.getStanzaCorrente().getNumeroAttrezziPossibili()>0) {
-			partita.getLabirinto().getStanzaCorrente().addAttrezzo(a);
+			partita.getStanzaCorrente().addAttrezzo(a);
 			partita.getGiocatore().getBorsa().removeAttrezzo(nomeAttrezzo);
+			io.mostraMessaggio("Attrezzo posato nella stanza!");
 		}
 		else {
-			io.mostraMessaggio("Non c'e' spazio nella stanza per poter inserire questo attrezzo!");
+			io.mostraMessaggio("Non c'e' spazio nella stanza per poter inserire questo attrezzo o questo attrezzo non è nella borsa!");
 		}
 	}
 

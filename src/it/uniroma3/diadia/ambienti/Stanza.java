@@ -73,9 +73,7 @@ public class Stanza {
         return stanza;
 	}
 	
-	public Stanza getStanzaCorrente() {
-		return this.getStanzaCorrente();
-	}
+	
 
     /**
      * Restituisce la nome della stanza.

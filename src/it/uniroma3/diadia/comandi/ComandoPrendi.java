@@ -14,13 +14,14 @@ public class ComandoPrendi implements Comando {
 	
 	@Override
 	public void esegui(Partita partita) {
-		Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
+		Attrezzo a = partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo);
 		if(partita.getGiocatore().getBorsa().getPesoRimanente(a)) {
 			partita.getGiocatore().getBorsa().addAttrezzo(a);
-			partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
+			partita.getStanzaCorrente().removeAttrezzo(a);
+			io.mostraMessaggio("Attrezzo messo nella borsa!");
 		} 
 		else {
-			io.mostraMessaggio("Attrezzo troppo pesante per entrare nella borsa!");
+			io.mostraMessaggio("Questo attrezzo non è nella stanza o è troppo pesante per la tua borsa!");
 		}
 	}
 
