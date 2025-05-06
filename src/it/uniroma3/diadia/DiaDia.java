@@ -39,13 +39,13 @@ public class DiaDia {
 	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "posa", "prendi"};
 
 	private Partita partita;
-	private IOConsole io;
+	private IO io;
 	private FabbricaDiComandi fabbricaComandi;
 	
 
-	public DiaDia(IO console) {
+	public DiaDia(IO io) {
 		this.partita = new Partita();
-		this.io = new IOConsole();
+		this.io = io;
 	//	this.fabbricaComandi = new FabbricaDiComandi();
 	}
 	

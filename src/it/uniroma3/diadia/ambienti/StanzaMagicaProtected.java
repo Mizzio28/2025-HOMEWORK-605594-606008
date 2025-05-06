@@ -6,7 +6,6 @@ public class StanzaMagicaProtected extends StanzaProtected {
 	final static private int SOGLIA_MAGICA_DEFAULT = 3;
 	private int contatoreAttrezziPosati;
 	private int sogliaMagica;
-	private int numeroAttrezzi;
 	public StanzaMagicaProtected(String nome) {
 		this(nome, SOGLIA_MAGICA_DEFAULT);
 	}
