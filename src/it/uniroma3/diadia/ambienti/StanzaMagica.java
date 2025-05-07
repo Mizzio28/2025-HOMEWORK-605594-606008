@@ -22,12 +22,7 @@ class StanzaMagica extends Stanza {
 			this.contatoreAttrezziPosati++;
 			if (this.contatoreAttrezziPosati > this.sogliaMagica)
 				attrezzo = this.modificaAttrezzo(attrezzo);
-			if (this.numeroAttrezzi<NUMERO_MASSIMO_ATTREZZI) {
-			this.attrezzi[this.numeroAttrezzi] = attrezzo;
-			this.numeroAttrezzi++;
-			return true;
-		}
-		else return false;
+			return super.addAttrezzo(attrezzo);
 
 	}
 	
@@ -36,8 +31,7 @@ class StanzaMagica extends Stanza {
 		int pesoX2 = attrezzo.getPeso() * 2;
 		nomeInvertito = new StringBuilder(attrezzo.getNome());
 		nomeInvertito = nomeInvertito.reverse();
-		attrezzo = new Attrezzo(nomeInvertito.toString(),
-		pesoX2);
+		attrezzo = new Attrezzo(nomeInvertito.toString(),pesoX2);
 		return attrezzo;
 		}
 }

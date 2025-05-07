@@ -7,7 +7,7 @@ public class StanzaProtected {
 	static final protected int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final protected int NUMERO_MASSIMO_ATTREZZI = 10;
 	
-	private String nome;
+	protected String nome;
 	
     protected Attrezzo[] attrezzi;
     protected int numeroAttrezzi;
@@ -15,7 +15,7 @@ public class StanzaProtected {
     protected Stanza[] stanzeAdiacenti;
     protected int numeroStanzeAdiacenti;
     
-	private String[] direzioni;
+	protected String[] direzioni;
     
     /**
      * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
