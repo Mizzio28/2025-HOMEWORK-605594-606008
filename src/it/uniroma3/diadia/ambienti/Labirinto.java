@@ -24,7 +24,7 @@ public class Labirinto {
         Stanza biblioteca = new Stanza("Biblioteca");
         Stanza aulaN11 = new Stanza("Aula N11");
         Stanza aulaN10 = new Stanza("Aula N10");
-        Stanza laboratorio = new Stanz("Laboratorio Campus");
+        Stanza laboratorio = new Stanza("Laboratorio Campus");
         
         /*
         Stanza aulaN11 = new StanzaMagica("Aula N11");

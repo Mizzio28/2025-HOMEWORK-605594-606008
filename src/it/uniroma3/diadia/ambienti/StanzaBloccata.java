@@ -1,6 +1,6 @@
 package it.uniroma3.diadia.ambienti;
 
-class StanzaBloccata extends Stanza{
+public class StanzaBloccata extends Stanza{
 	String direzioneB;
 	String attrezzoLibera;
 	
