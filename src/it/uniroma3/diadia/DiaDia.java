@@ -59,8 +59,10 @@ public class DiaDia {
 			istruzione = io.leggiRiga();
 		while (!processaIstruzione(istruzione));
 	}   
-
-
+	
+	public static String getMessaggioBenvenuto() {
+		return MESSAGGIO_BENVENUTO;
+	}
 	/**
 	 * Processa una istruzione 
 	 *
@@ -69,7 +71,32 @@ public class DiaDia {
 	// si potrebbero separare i metodi dei comandi per una coesione maggiore (per ora meglio evitare) 
 	
 	private boolean processaIstruzione(String istruzione) {
-		/*
+		
+		//nuovo codice
+		
+		Comando comandoDaEseguire;
+		FabbricaDiComandiFisarmonica industria = new FabbricaDiComandiFisarmonica(this.io);
+		comandoDaEseguire = industria.costruisciComando(istruzione);
+			comandoDaEseguire.esegui(this.partita);
+		if(this.partita.vinta()) {
+			io.mostraMessaggio("Hai vinto!!");
+		}else if (!this.partita.getGiocatore().isVivo()) {
+            io.mostraMessaggio("Hai esaurito i CFU...");
+        }
+
+        return this.partita.isFinita();
+    }
+
+    public static void main(String[] args) {
+    	IO console = new IOConsole();
+        DiaDia gioco = new DiaDia(console);
+        gioco.gioca();
+    }
+    /*
+    Tecnicamente da qui in poi il codice non dovrebbe più servire
+	implementazioni dei comandi dell'utente:
+
+    /*
 		//vecchio codice
 		
 		Comando comandoDaEseguire = new Comando(istruzione);
@@ -92,79 +119,11 @@ public class DiaDia {
 				return true;
 			} else
 				return false;  
-				*/ 
-		
-		//nuovo codice
-		
-		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica industria = new FabbricaDiComandiFisarmonica(this.io);
-		comandoDaEseguire = industria.costruisciComando(istruzione);
-			comandoDaEseguire.esegui(this.partita);
-		if(this.partita.vinta()) {
-			io.mostraMessaggio("Hai vinto!!");
-		}else if (!this.partita.getGiocatore().isVivo()) {
-            io.mostraMessaggio("Hai esaurito i CFU...");
-        }
-
-        return this.partita.isFinita();
-    }
-
-    public static void main(String[] args) {
-    	IO console = new IOConsole();
-        DiaDia gioco = new DiaDia(console);
-        gioco.gioca();
-    }
+     
 	
+	Stampa informazioni di aiuto.
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //Tecnicamente da qui in poi il codice non dovrebbe più servire
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-	// implementazioni dei comandi dell'utente:
-
-	/**
-	 * Stampa informazioni di aiuto.
-	 */
-    
-    
-    /*
 	private void aiuto() {
 		StringBuilder messaggioAiuto = new StringBuilder();
 		for(int i=0; i< elencoComandi.length; i++) 
@@ -204,12 +163,9 @@ public class DiaDia {
 		io.mostraMessaggio("La tua borsa al momento pesa:" + this.partita.getGiocatore().getBorsa().getPeso()+ "Kg");
 	}
 
-	/**
-	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
-	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
-	 */
+	 Cerca di andare in una direzione. Se c'e' una stanza ci entra 
+	 e ne stampa il nome, altrimenti stampa un messaggio di errore
     
-    /*
 	private void vai(String direzione) {
 		if(direzione==null)
 			io.mostraMessaggio("Dove vuoi andare ?");
@@ -233,11 +189,9 @@ public class DiaDia {
 		io.mostraMessaggio("" +partita.getGiocatore().getCfu());
 	}
 
-	/**
-	 * Comando "Fine".
-	 */
+	 Comando "Fine".
+	 
     
-    /*
 	private void fine() {
 		io.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
 	}
@@ -249,7 +203,6 @@ public class DiaDia {
 }
 */
     
-    int provaaaaaaaaaaaaaaaa = 0;
 }
 
 
